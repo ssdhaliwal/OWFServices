@@ -9,10 +9,10 @@ import org.service.object.*;
 
 @ApplicationPath("rs")
 public class RESTServices extends ResourceConfig {
-    public RESTServices(@Context ServletContext servletContext) {
+	public RESTServices(@Context ServletContext servletContext) {
 		servletContext.setAttribute("shared.storage", new GlobalSet());
 
 		packages("com.fasterxml.jackson.jaxrs.json");
-        packages("org.service.resource");
-    }
+		packages("org.service.resource");
+	}
 }

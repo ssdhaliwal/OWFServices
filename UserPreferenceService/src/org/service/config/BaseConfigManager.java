@@ -42,20 +42,20 @@ public abstract class BaseConfigManager {
 
 				String configPath = "WEB-INF/";
 				String actualPath = servlet.getRealPath(configPath);
-				
-		    	System.out.println("loading resource");
-		    	InputStream stream = servlet.getResourceAsStream(configPath + "app.config");
-		    	BufferedReader reader = new BufferedReader(new InputStreamReader(stream));
-		    	StringBuilder sb = new StringBuilder();
-		    	String line;
-		    	try {
-		    	while ((line = reader.readLine()) != null) {
-		    		sb.append(line);
-		    	}
-		    	reader.close();
-		    	} catch (Exception ex) {
-		    		System.out.println(ex.getStackTrace());
-		    	}
+
+				System.out.println("loading resource");
+				InputStream stream = servlet.getResourceAsStream(configPath + "app.config");
+				BufferedReader reader = new BufferedReader(new InputStreamReader(stream));
+				StringBuilder sb = new StringBuilder();
+				String line;
+				try {
+					while ((line = reader.readLine()) != null) {
+						sb.append(line);
+					}
+					reader.close();
+				} catch (Exception ex) {
+					System.out.println(ex.getStackTrace());
+				}
 
 				resources.add("app.config", sb.toString());
 				//ConfigLoader.setLocalPath("");
@@ -69,12 +69,13 @@ public abstract class BaseConfigManager {
 					}
 
 					// initialize logger outside of config
-					Log4JManager log4JManager = ConfigLoader.initializeLogger(
-							actualPath + "/log4j2Config.xml", 
-							config.getProperty(ConfigLoader._LOGCLASSPROPERTY).toString(), 
-							config.getProperty(ConfigLoader._LOGPATHPROPERTY).toString() + 
-							(config.getProperty(ConfigLoader._LOGPATHPROPERTY).toString().endsWith("/") ? "" : "/") + 
-							config.getProperty(ConfigLoader._LOGFILENAMEPROPERTY).toString());
+					Log4JManager log4JManager = ConfigLoader
+							.initializeLogger(actualPath + "/log4j2Config.xml",
+									config.getProperty(ConfigLoader._LOGCLASSPROPERTY).toString(),
+									config.getProperty(ConfigLoader._LOGPATHPROPERTY).toString()
+											+ (config.getProperty(ConfigLoader._LOGPATHPROPERTY).toString()
+													.endsWith("/") ? "" : "/")
+											+ config.getProperty(ConfigLoader._LOGFILENAMEPROPERTY).toString());
 					config.setLogger(log4JManager);
 				} catch (Exception ex) {
 					System.out.println(ex.getStackTrace());
