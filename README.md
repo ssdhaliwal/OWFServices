@@ -43,13 +43,6 @@ Preferences Service
 		{"status": "SUCCESS","message": "params (03-4404-53405434, test)","result": "true"}
 		{"status": "ERROR","message": "params (03-4404-53405434, test)","result": "false
 
-Key Store Service
-  - store key-value(s) in database table
-  - public/shared information with option to restrict view
-  - user/role/group/public views
-  - key-value pair store
-    - key, occurance, value, restriction
-
 Database Service
   - action, type, filters
     - action = crud
